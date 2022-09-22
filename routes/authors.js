@@ -29,8 +29,8 @@ router.post('/', async (req,res) => {
         name : req.body.name
     })
 try {
-    const author = await Author.save()
-    res.redirect('authors/${newAuthor.id}')
+    const newAuthor = await author.save()
+    //res.redirect('authors/${newAuthor.id}')
     res.redirect('authors')
 } catch{
     
@@ -42,34 +42,5 @@ try {
 }
 })
 
-// All Authors Route 
-router.get('/', async (req,res) => {
-    res.render('authors/index')
-})
 
-
-
-
-// // New Author Route 
-// router.get('/new', (req, res) => {
-//     res.render('authors/new', { author: new Author() })
-// })
-
-// // Create Author Route 
-// router.post('/', (req,res) => {
-//     const author = new Author({
-//         name : req.body.name
-//     })
-//     author.save((err, newAuthor) => {
-//         if (err) {
-//             res.render('authors/new', {
-//             author : author ,
-//             errorMessage : 'Error creating Author'
-//         })
-//     } else {
-//         // res.redirect('authors/${newAuthor.id}')
-//         res.redirect('authors')
-//     }
-// })
-// })
 module.exports = router
